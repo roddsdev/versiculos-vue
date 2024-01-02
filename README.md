@@ -1,10 +1,10 @@
 <p align="center"><a href="https://vuejs.org" target="_blank" rel="noopener noreferrer"><img width="100" src="https://vuejs.org/images/logo.png" alt="Vue logo"></a></p>
 
-(imagem)
+![versiculos-pequeno](https://github.com/roddsdev/versiculos-vue/assets/148573340/761733f0-e06c-4c55-b70b-6cb562717ed6)
 
 
 ## Projeto VueJs consumindo API pública
-[![en](https://img.shields.io/badge/lang-en-red.svg)](https://github.com/roddsdev/product-store-vue/blob/main/README.en.md)
+[![en](https://img.shields.io/badge/lang-en-red.svg)](https://github.com/roddsdev/versiculos-vue/blob/main/README.en.md)
 
 Este é um pequeno projeto feito com:
 
