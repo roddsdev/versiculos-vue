@@ -1,0 +1,177 @@
+@import "../styles/index.scss";
+  
+$cardsTotal: 3;
+$cardsWidth: 500px;
+$cardsPositionOffset: 55vh * 0.06;
+$cardsScaleOffset: 0.08;
+$defaultTranslation: $cardsPositionOffset * $cardsTotal;
+$defaultScale: 1 - ($cardsScaleOffset * $cardsTotal);
+$fs-card-verse: 1.125em;
+$fs-card-reference: 1.00em;
+$fs-card-verse-mobile: 0.85em;
+$fs-card-reference-mobile: 0.7em;
+  
+.card {
+  @include card();
+  @include absolute(0);
+  @include flex-center();
+
+  @include after() {
+    @include sizing(21px 3px);
+    @include absolute(right 0 bottom 11px left 0);
+
+    margin: auto;
+    border-radius: 100px;
+    background: rgba($c-black, 0.3);
+  }
+  display: flex;
+  align-items: center;
+  max-height: fit-content;
+  min-height: 500px;
+  min-width: $cardsWidth;
+  margin: auto;
+  font-size: $fs-h2;
+  font-weight: $fw-bold;
+  color: $c-white;
+  background-image: linear-gradient(
+    -180deg,
+    $primary-gradient-start 2%,
+    $primary-gradient-end 100%
+  );
+  opacity: 0;
+  transform: translateY($defaultTranslation) scale($defaultScale);
+  transform-origin: 50%, 100%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  user-select: none;
+  pointer-events: none;
+  will-change: transform, opacity;
+
+  &.isCurrent {
+    pointer-events: auto;
+  }
+
+  &.isAnimating {
+    transition: transform 0.7s $ease-out-back;
+  }
+}
+  
+.cardVerseText {
+  margin: 30px 15px 0 15px;
+  font-size: $fs-card-verse;
+}
+
+.cardReferenceText {
+  margin: 30px 0 30px;
+  font-size: $fs-card-reference;
+  color: yellow;
+  text-shadow: 2px 2px 2px #000000;
+}
+
+@media (max-width: 600px) {
+  .card {
+    min-width: 300px;
+  }
+  .cardVerseText {
+    margin: 30px 15px 0 15px;
+    font-size: $fs-card-verse-mobile;
+  }
+  
+  .cardReferenceText {
+    margin: 30px 0 30px;
+    font-size: $fs-card-reference-mobile;
+    color: yellow;
+    text-shadow: 2px 2px 2px #000000;
+  }
+}
+  
+@for $i from 1 through $cardsTotal {
+  $index: $i - 1;
+  $translation: $cardsPositionOffset * $index;
+  $scale: 1 - ($cardsScaleOffset * $index);
+
+  .card:nth-child(#{$i}) {
+    z-index: $cardsTotal - $index;
+    opacity: 1;
+    transform: translateY($translation) scale($scale);
+
+    @if $i == 3 {
+      color: $c-red-25;
+      background-color: $c-red-25;
+    } @else if $i == 2 {
+      color: $c-red-50;
+      background-color: $c-red-50;
+    }
+
+    @if $i != 1 {
+      background-image: none;
+
+      @include after() {
+        @include sizing(0 0);
+      }
+    }
+  }
+
+  .card:nth-child(#{$i}) .cardReferenceText {
+    @if $i == 3 {
+      color: $c-red-25;
+      text-shadow: none;
+    } @else if $i == 2 {
+      color: $c-red-50;
+      text-shadow: none;
+    }
+  }
+}
+
+.limite {  
+  font-size: 0.7em;
+  color: $c-black;
+  padding: 0 20px;
+}
+
+button {
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+  letter-spacing: 2px;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #000;
+  cursor: pointer;
+  border: 3px solid;
+  padding: 0.25em 0.5em;
+  box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px, 5px 5px 0px 0px;
+  position: relative;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-area {
+  margin-top: 15px;
+}
+
+.apiMsg-area {
+  margin-top: 15px;
+  font-size: 14px;
+  color: #e6e6e1;
+}
+
+.logged-email-area {
+  padding-bottom: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.api-info-area {
+  padding-top: 35px;
+  font-size: 10px;
+  color: #e6e6e1;
+}
+
+.api-info-area > a {
+  color: yellow;
+}
+
+input {
+  line-height:2em;
+}
