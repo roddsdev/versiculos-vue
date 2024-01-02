@@ -6,6 +6,8 @@
 ## VueJs project consuming public API
 [![pt-br](https://img.shields.io/badge/lang-pt--br-green.svg)](https://github.com/roddsdev/versiculos-vue/blob/main/README.md)
 
+Live demonstration: https://roddsdev.github.io/versiculos-vue/
+
 This is a small project made with:
 
 - Vue.js 3.3.11

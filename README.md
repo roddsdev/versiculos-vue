@@ -6,6 +6,8 @@
 ## Projeto VueJs consumindo API pública
 [![en](https://img.shields.io/badge/lang-en-red.svg)](https://github.com/roddsdev/versiculos-vue/blob/main/README.en.md)
 
+Demonstração: https://roddsdev.github.io/versiculos-vue/
+
 Este é um pequeno projeto feito com:
 
 - Vue.js 3.3.11
